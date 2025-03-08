@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ridho Gymnastiar - Java Backend Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="data.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-blue: #1a365d;
+            --accent-blue: #2b6cb0;
+            --hover-blue: #3182ce;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #63b3ed, #4299e1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(31, 41, 55, 0.5);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <nav class="fixed w-full bg-slate-900/80 backdrop-blur-md z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <a href="#" class="text-xl font-bold gradient-text">My Portofolio</a>
+
+                <button id="menu-btn" class="md:hidden text-slate-300 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-300 hover:text-white transition">About</a>
+                    <a href="#experience" class="text-slate-300 hover:text-white transition">Experience</a>
+                    <a href="#projects" class="text-slate-300 hover:text-white transition">Projects</a>
+                    <a href="#contact" class="text-slate-300 hover:text-white transition">Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-16 right-0 w-full bg-slate-900/95 backdrop-blur-lg">
+            <div class="flex flex-col items-center py-4 space-y-4">
+                <a href="#about" class="text-slate-300 hover:text-white px-4 py-2">About</a>
+                <a href="#experience" class="text-slate-300 hover:text-white px-4 py-2">Experience</a>
+                <a href="#projects" class="text-slate-300 hover:text-white px-4 py-2">Projects</a>
+                <a href="#contact" class="text-slate-300 hover:text-white px-4 py-2">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="pt-32 pb-20 px-6">
+        <div class="container mx-auto" data-aos="fade-up">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <img id="profile-photo" alt="Profile"
+                    class="w-48 h-58 rounded-full ring-4 ring-slate-700 hover:ring-blue-500 cursor-pointer transition-all duration-300">
+                <div class="mt-8 md:mt-0">
+                    <h1 id="name" class="text-4xl md:text-5xl font-bold mb-4"></h1>
+                    <h2 id="title" class="text-2xl md:text-3xl gradient-text font-semibold mb-6"></h2>
+                    <div class="flex space-x-4">
+                        <a id="email-btn"
+                            class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-full flex items-center">
+                            <i class="fas fa-envelope mr-2"></i>Email Me
+                        </a>
+                        <a id="linkedin-btn" target="_blank"
+                            class="border border-blue-600 text-blue-500 hover:bg-blue-600/10 px-6 py-2 rounded-full flex items-center">
+                            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-5 bg-slate-900/50 px-6">
+        <div class="container mx-auto" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-8 gradient-text">About Me</h2>
+            <p id="about-text" class="text-slate-300 leading-relaxed max-w-full "></p>
+
+            <div class="grid md:grid-cols-2 gap-8 mt-12">
+                <div class="bg-slate-800/50 p-6 rounded-xl card-hover">
+                    <h3 class="text-xl font-semibold mb-4">Personal Info</h3>
+                    <div class="space-y-2 text-slate-300">
+                        <p><i class="fas fa-envelope mr-2"></i><span id="email"></span></p>
+                        <p><i class="fas fa-phone mr-2"></i><span id="phone"></span></p>
+                        <p><i class="fab fa-github mr-2"></i><span id="github"></span></p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-800/50 p-6 rounded-xl card-hover">
+                    <h3 class="text-xl font-semibold mb-4">Education</h3>
+                    <div id="education-container"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-10 px-6">
+        <div class="container mx-auto" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-12 gradient-text">Experience</h2>
+            <div id="experience-container" class="space-y-12"></div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-10 bg-slate-900/50 px-6">
+        <div class="container mx-auto" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-12 gradient-text">Projects</h2>
+            <div id="projects-container" class="grid md:grid-cols-2 gap-8"></div>
+        </div>
+    </section>
+
+    <section class="py-10 px-6">
+        <div class="container mx-auto" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-12 gradient-text">Technical Skills</h2>
+            <div id="skills-container" class="grid grid-cols-2 md:grid-cols-5 gap-4"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 bg-slate-900/50 px-6">
+        <div class="container mx-auto" data-aos="fade-up">
+            <h2 class="text-3xl font-bold mb-12 gradient-text text-center">Get in Touch</h2>
+
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <!-- Contact Info -->
+                <div class="space-y-8">
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-hover">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-blue-600/20 rounded-full">
+                                <i class="fas fa-envelope text-2xl text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-slate-100">Email Me</h3>
+                                <p class="text-slate-300">ridhogymnastiar.ar@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-hover">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-blue-600/20 rounded-full">
+                                <i class="fas fa-phone text-2xl text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-slate-100">Call Me</h3>
+                                <p class="text-slate-300">+6285280453125</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-800/50 p-6 rounded-xl card-hover">
+                        <div class="flex items-center space-x-4">
+                            <div class="p-3 bg-blue-600/20 rounded-full">
+                                <i class="fas fa-map-marker-alt text-2xl text-blue-400"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-semibold text-slate-100">Location</h3>
+                                <p class="text-slate-300">Jakarta, Indonesia</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form id="contact-form" class="bg-slate-800/50 p-8 rounded-xl space-y-6 card-hover">
+                    <div>
+                        <label for="name" class="block text-slate-300 mb-2">Full Name</label>
+                        <input type="text" id="name" name="name"
+                            class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-slate-100"
+                            required>
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-slate-300 mb-2">Email Address</label>
+                        <input type="email" id="email" name="email"
+                            class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-slate-100"
+                            required>
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-slate-300 mb-2">Your Message</label>
+                        <textarea id="message" name="message" rows="5"
+                            class="w-full px-4 py-3 bg-slate-700 border border-slate-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none text-slate-100"
+                            required></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 flex items-center justify-center">
+                        <i class="fas fa-paper-plane mr-2"></i>Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900/80 py-8 px-6">
+        <div class="container mx-auto text-center text-slate-400">
+            <p id="copyright">&copy; 2024 Ridho Gymnastiar Al Rasyid. All rights reserved.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <a id="github-link" class="hover:text-blue-500"><i class="fab fa-github"></i></a>
+                <a id="linkedin-link" class="hover:text-blue-500"><i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
