@@ -4,7 +4,7 @@ const portfolioData = {
     personal: {
         name: "Ridho Gymnastiar Al Rasyid",
         title: "Java Backend Developer",
-        photo: "./mypict.jpg", // Replace with your photo URL
+        photo: "./profile_me.jpg", // Replace with your photo URL
         email: "ridhogymnastiar.ar@gmail.com",
         phone: "+6285280453125",
         linkedin: "linkedin.com/in/ridhogaa",
