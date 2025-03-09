@@ -111,7 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const projectsContainer = document.getElementById("projects-container");
     portfolioData.projects.forEach((project) => {
       projectsContainer.innerHTML += `
-                <div class="bg-slate-800/50 p-6 rounded-xl card-hover" data-aos="fade-up">
+                <a href="${
+                  project.github
+                }" target="_blank" class="cursor-pointer bg-slate-800/50 p-6 rounded-xl card-hover" data-aos="fade-up">
                     <img src="${project.image}" alt="${
         project.name
       }" class="w-full h-48 object-cover rounded-lg mb-4">
@@ -158,21 +160,38 @@ document.addEventListener("DOMContentLoaded", () => {
   const copyright = document.getElementById("copyright");
   copyright.innerHTML = `&copy; ${new Date().getFullYear()} Ridho Gymnastiar Al Rasyid. All rights reserved.`;
 
-  // EmailJS Integration (Ganti dengan konfigurasi Anda)
-  const form = document.getElementById("contact-form");
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get("name"),
+        email: formData.get("email"),
+        message: formData.get("message"),
+      };
 
-    // Ganti dengan service ID dan template ID dari EmailJS
-    emailjs.sendForm("service_id", "template_id", e.target).then(
-      () => {
-        alert("Message sent successfully!");
-        form.reset();
-      },
-      (error) => {
-        alert("Error sending message: " + error.text);
+      try {
+        const response = await fetch(
+          "https://script.google.com/macros/s/AKfycbz9IqcMSVaqSWLa5l_IGMEjBvzAim7-7mtkM-CHQ4sAlEzwD9t6jIzRREwTGVLUyXFlDw/exec",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          }
+        );
+
+        if (response.ok) {
+          alert("Pesan terkirim!");
+          form.reset();
+        } else {
+          const errorText = await response.text();
+          alert("Gagal mengirim pesan: " + errorText);
+        }
+      } catch (error) {
+        alert("Terjadi kesalahan jaringan: " + error.message);
       }
-    );
-  });
+    });
 });
