@@ -3,7 +3,7 @@
 const portfolioData = {
   personal: {
     name: "Ridho Gymnastiar Al Rasyid",
-    title: "Java Backend Developer",
+    title: "Backend Developer",
     photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRy-c359VuTz3IOYGr18X0JirKRw0FRCUlByw&s", // Replace with your photo URL
     email: "ridhogymnastiar.ar@gmail.com",
     phone: "+6285280453125",
@@ -171,7 +171,7 @@ const portfolioData = {
         "Security",
         "Jasper",
         "Mailer",
-        "Oauth2",
+        "OAuth2",
         "MVC",
         "Docker",
       ],
@@ -193,7 +193,7 @@ const portfolioData = {
         "Security",
         "Jasper",
         "Mailer",
-        "Oauth2",
+        "OAuth2",
         "MVC",
         "GCP",
         "Docker",
@@ -213,10 +213,8 @@ const portfolioData = {
     { name: "Hibernate", icon: "fas fa-code" },
     { name: "PostgreSQL", icon: "fas fa-database" },
     { name: "Deployment", icon: "fas fa-cloud-upload-alt" },
-    { name: "Scrum", icon: "fas fa-users" },
-    { name: "MVC", icon: "fas fa-sitemap" },
     { name: "Microservice", icon: "fas fa-cubes" },
-    { name: "Oauth2", icon: "fas fa-lock" },
+    { name: "OAuth2", icon: "fas fa-lock" },
     { name: "Docker", icon: "fab fa-docker" },
     { name: "GCP", icon: "fab fa-google" },
     { name: "Rust", icon: "fab fa-rust" },
